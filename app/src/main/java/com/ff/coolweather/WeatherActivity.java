@@ -1,5 +1,6 @@
 package com.ff.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.ff.coolweather.gson.Forecast;
 import com.ff.coolweather.gson.Weather;
+import com.ff.coolweather.service.AutoUpdateService;
 import com.ff.coolweather.util.HttpUtil;
 import com.ff.coolweather.util.Utility;
 
@@ -182,5 +184,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
